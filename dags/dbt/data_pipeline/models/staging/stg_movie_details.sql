@@ -1,28 +1,25 @@
-SELECT
-  raw_payload:id::int AS movie_id,
-  raw_payload:title::string AS movie_title,
-  raw_payload:release_date::date AS movie_release_date,
-  raw_payload:genre_ids::array AS movie_genre_ids,
-  raw_payload:overview::string AS movie_overview,
-  raw_payload:poster_path::string AS movie_poster_path,
-  raw_payload:backdrop_path::string AS movie_backdrop_path,
-  raw_payload:vote_average::float AS movie_vote_average,
-  raw_payload:vote_count::int AS movie_vote_count,
-  raw_payload:runtime::int AS movie_runtime,
-  raw_payload:budget::int AS movie_budget,
-  raw_payload:revenue::int AS movie_revenue,
-  raw_payload:status::string AS movie_status,
-  raw_payload:original_language::string AS movie_original_language,
-  raw_payload:original_title::string AS movie_original_title,
-  raw_payload:popularity::float AS movie_popularity,
-  raw_payload:production_companies::array AS movie_production_companies,
-  raw_payload:production_countries::array AS movie_production_countries,
-  raw_payload:spoken_languages::array AS movie_spoken_languages,
-  raw_payload:tagline::string AS movie_tagline,
-  raw_payload:video::boolean AS movie_video,
-  raw_payload:adult::boolean AS movie_adult,
-  raw_payload:belongs_to_collection::variant AS movie_belongs_to_collection,
-  raw_payload:homepage::string AS movie_homepage,
-  raw_payload:imdb_id::string AS movie_imdb_id,
-  raw_payload:original_name::string AS movie_original_name
-FROM {{ source('tmdb', 'raw_movie_details') }}
+with source as (
+  select * from {{ source('tmdb', 'raw_movie_details') }}
+)
+select
+  raw_payload:id::int as movie_id,
+  raw_payload:title::string as movie_title,
+  raw_payload:original_name::string as original_name,
+  raw_payload:original_title::string as original_title,
+  raw_payload:original_language::string as original_language,
+  raw_payload:status::string as status,
+  raw_payload:release_date::date as release_date,
+  raw_payload:runtime::int as runtime_min,
+  nullif(raw_payload:budget::number, 0) as budget,
+  nullif(raw_payload:revenue::number, 0) as revenue,
+  raw_payload:vote_average::number(4,2) as vote_average,
+  raw_payload:vote_count::int as vote_count,
+  raw_payload:popularity::float as popularity,
+  raw_payload:overview::string as overview,
+  raw_payload:video::boolean as video,
+  raw_payload:adult::boolean as adult,
+  raw_payload:imdb_id::string as imdb_id,
+  raw_payload:belongs_to_collection::variant as movie_belongs_to_collection,
+  ingested_at
+from source
+qualify row_number() over (partition by movie_id order by ingested_at desc) = 1

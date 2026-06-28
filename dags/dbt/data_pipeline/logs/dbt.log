@@ -2256,3 +2256,110 @@ where movie_id is null
 Finished 'test' with 2 warnings and 1 error for target 'dev' [3.8s]
 Processed: 5 tests
 Summary: 5 total | 4 success | 1 error
+==================== 2026-06-28T20:14:36.654029Z | 019f0fde-a268-79b3-bc6b-2b8954857d33 ====================
+20:14:36.657024 [info ]: dbt-fusion 2.0.0-preview.193
+20:14:36.661666 [info ]: Started loading project
+20:14:36.686996 [info ]: Loading profiles.yml
+20:14:36.857880 [info ]: Loading packages.yml
+20:14:36.860772 [debug]:    Started loading packages
+20:14:36.878993 [debug]:     Loaded [  0.02s] packages
+20:14:36.885344 [info ]: Finished loading project [  0.22s]
+20:14:36.889104 [info ]: Started parsing
+20:14:36.951767 [debug]: Finished parsing models/sources.yml [  0.01s]
+20:14:36.952192 [debug]: Finished parsing models/staging/properties.yml [  0.00s]
+20:14:36.971291 [debug]: Finished parsing models/staging/stg_movie_details.sql [  0.01s]
+20:14:36.971724 [debug]: Finished parsing models/staging/stg_movies.sql [  0.00s]
+20:14:36.978669 [debug]: Finished parsing target/generic_tests/relationships_stg_movie_detail_b703bbf168b669bfecb90586a7fa6c49.sql [  0.00s]
+20:14:36.978843 [debug]: Finished parsing target/generic_tests/generic_non_negative_stg_movie_details_movie_revenue.sql [  0.00s]
+20:14:36.979009 [debug]: Finished parsing target/generic_tests/unique_stg_movies_movie_id.sql [  0.00s]
+20:14:36.979234 [debug]: Finished parsing target/generic_tests/not_null_stg_movies_movie_id.sql [  0.00s]
+20:14:36.979433 [debug]: Finished parsing target/generic_tests/not_null_stg_movies_movie_release_date.sql [  0.00s]
+20:14:36.983779 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline.marts.finance_mart
+- models.data_pipeline.marts.sales_mart
+- seeds.data_pipeline
+20:14:36.985400 [info ]: Finished parsing [  0.10s]
+20:14:36.989284 [info ]: Started scheduling
+20:14:36.992141 [info ]: Finished scheduling [  0.00s]
+20:14:37.038726 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "TESLA_RAW_DB", schema: "TMDB", table: "RAW_MOVIE_DETAILS" }) and interval: None
+20:14:37.294217 [debug]: Requesting license from https://if159.us1.dbt.com/api/private/accounts/70506183145107/feature-licenses/ with 1 key IDs: ["fusion-prod-2025-11-20"]
+20:14:37.609338 [warn ]: [LicenseError (dbt1068)]: Error loading license from remote server if159.us1.dbt.com, skipping: Email not verified
+20:14:37.745775 [debug]: Requesting license from https://if159.us1.dbt.com/api/private/accounts/70506183145107/feature-licenses/ with 1 key IDs: ["fusion-prod-2025-11-20"]
+20:14:38.058501 [debug]: License check failed: Feature not licensed: 'lineage'
+20:14:38.060619 [warn ]: [LicenseError (dbt1068)]: Strict static analysis requires logging into dbt. Run dbt login to sign in or create a free account, or provide a dbt_cloud.yml downloaded from dbt platform's account settings. Static analysis is now running in baseline mode.
+20:14:38.103072 [info ]: Started building task graph
+20:14:38.107160 [info ]: Finished building task graph [  0.00s]
+20:14:39.698202 [debug]: Query executed on node unknown:
+show terse schemas in database tesla_staging_db
+    limit 10000
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "data_pipeline", "target_name": "dev"} */
+20:14:39.703750 [info ]: Started rendering (1 nodes)
+20:14:39.704524 [info ]: Started model cinema.stg_movie_details
+20:14:39.704913 [debug]: Started rendering model cinema.stg_movie_details
+20:14:39.713317 [debug]: Compiled SQL for node model.data_pipeline.stg_movie_details at target/compiled/data_pipeline/models/staging/stg_movie_details.sql
+20:14:39.714008 [debug]: Finished rendering [  0.01s] model cinema.stg_movie_details [success]
+20:14:39.714091 [info ]: Finished rendering [  0.01s] (1 nodes, 0 skipped, 0 errors)
+20:14:39.715279 [info ]: Started analyzing (1 nodes)
+20:14:39.715457 [debug]: Started analyzing model cinema.stg_movie_details
+20:14:39.744895 [debug]: Finished analyzing [  0.03s] model cinema.stg_movie_details [success]
+20:14:39.744939 [info ]: Finished analyzing [  0.03s] (1 nodes, 0 skipped, 0 errors)
+20:14:39.744963 [info ]: Started running (1 nodes)
+20:14:39.744999 [info ]: Started running model cinema.stg_movie_details
+20:14:40.028369 [debug]: Query executed on node model.data_pipeline.stg_movie_details:
+SHOW OBJECTS IN SCHEMA "TESLA_STAGING_DB"."CINEMA" LIMIT 10000
+20:14:40.034064 [debug]: Writing runtime sql for node "model.data_pipeline.stg_movie_details"
+20:14:41.261574 [debug]: Query executed on node model.data_pipeline.stg_movie_details:
+create or replace transient  table tesla_staging_db.cinema.stg_movie_details
+    
+    
+    
+    
+    as (with source as (
+  select * from tesla_raw_db.tmdb.raw_movie_details
+)
+select
+  raw_payload:id::int as movie_id,
+  raw_payload:title::string as movie_title,
+  raw_payload:original_name::string as original_name,
+  raw_payload:original_title::string as original_title,
+  raw_payload:original_language::string as original_language,
+  raw_payload:status::string as status,
+  raw_payload:release_date::date as release_date,
+  raw_payload:runtime::int as runtime_min,
+  nullif(raw_payload:budget::number, 0) as budget,
+  nullif(raw_payload:revenue::number, 0) as revenue,
+  raw_payload:vote_average::number(4,2) as vote_average,
+  raw_payload:vote_count::int as vote_count,
+  raw_payload:popularity::number(4,2) as popularity,
+  raw_payload:overview::string as overview,
+  raw_payload:video::boolean as video,
+  raw_payload:adult::boolean as adult,
+  raw_payload:imdb_id::string as imdb_id,
+  raw_payload:belongs_to_collection::variant as movie_belongs_to_collection,
+  ingested_at
+from source
+qualify row_number() over (partition by movie_id order by ingested_at desc) = 1
+    )
+
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.data_pipeline.stg_movie_details", "profile_name": "data_pipeline", "target_name": "dev"} */
+20:14:41.266104 [info ]: Finished running [  1.52s] model cinema.stg_movie_details [success]
+20:14:41.266241 [info ]: Finished running [  1.52s] (1 nodes, 0 skipped, 0 errors)
+20:14:41.266289 [info ]:  Succeeded [  1.56s] model cinema.stg_movie_details (table)
+20:14:41.385840 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' with 3 warnings for target 'dev' [4.7s]
+Processed: 1 model
+Summary: 1 total | 1 success
+==================== 2026-06-28T20:34:27.444352Z | 019f0ff0-cddd-7623-9bbd-54171d600b33 ====================
+20:34:27.450324 [info ]: dbt-fusion 2.0.0-preview.193
+20:34:27.451945 [info ]: Started cleaning
+20:34:27.453890 [info ]: Started loading project
+20:34:27.473624 [info ]: Loading profiles.yml
+20:34:27.482403 [info ]: Finished loading project [  0.03s]
+20:34:27.510054 [info ]: Removing target
+20:34:27.512001 [info ]: Removing dbt_packages
+20:34:27.528139 [info ]: Finished cleaning [  0.08s]
+20:34:27.833996 [info ]: 
+==================== Execution Summary =====================
+Finished 'clean' successfully [389ms]
