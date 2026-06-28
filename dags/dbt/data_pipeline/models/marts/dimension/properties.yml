@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: dim_genre
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: genre_id
+        description: "The ID of the genre."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: genre_name
+        description: "The name of the genre."
+        data_type: string
+        data_tests:
+          - not_null
+
+  - name: dim_company
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: company_id
+        description: "The ID of the company."
+        data_type: int
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_movie_company')
+                field: company_id
+      - name: company_name
+        description: "The name of the company."
+        data_type: string
+        data_tests:
+          - not_null
+      - name: origin_country
+        description: "The origin country of the company."
+        data_type: string
+
+  - name: dim_person
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: person_id
+        description: "The ID of the person."
+        data_type: int
+        data_tests:
+          - not_null
+          - unique
+      - name: person_name
+        description: "The name of the person."
+        data_type: string
+        data_tests:
+          - not_null
