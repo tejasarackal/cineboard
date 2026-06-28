@@ -15,6 +15,12 @@ seeds:
   data_pipeline:
     +schema: raw
 
+vars:
+  cast_top_n: 10
+  crew_top_n: 10
+  min_vote_count: 50
+  min_films: 3
+
 models:
   data_pipeline:
     +static_analysis: strict
@@ -22,16 +28,12 @@ models:
       +materialized: view
       +database: tesla_staging_db
       +schema: cinema
-      stg_movie_details:
-        +materialized: table
-        +database: tesla_staging_db
-        +schema: cinema
+    intermediate:
+      +materialized: table
+      +database: tesla_staging_db
+      +schema: cinema
     marts:
-      finance_mart:
-        +materialized: table
-        +database: tesla_analytics_db
-        +schema: finance_mart
-      sales_mart:
-        +materialized: table
-        +database: tesla_analytics_db
-        +schema: sales_mart
+      +materialized: table
+      +database: tesla_analytics_db
+      +schema: cinema
+      

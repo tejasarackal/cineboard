@@ -23,3 +23,26 @@ models:
         data_type: int
         data_tests:
           - generic_non_negative
+
+  - name: stg_credits
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+      - name: cast_list
+        description: "The list of cast members."
+        data_type: variant
+        data_tests:
+          - not_null
+      - name: crew_list
+        description: "The list of crew members."
+        data_type: variant
+        data_tests:
+          - not_null

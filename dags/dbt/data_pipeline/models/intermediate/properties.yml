@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: int_movie_genre
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_movie_details')
+                field: movie_id
+      - name: genre_id
+        description: "The ID of the genre."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: genre_name
+        description: "The name of the genre."
+        data_type: string
+        data_tests:
+          - not_null
+  
+  - name: int_movie_company
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_movie_details')
+                field: movie_id
+      - name: company_id
+        description: "The ID of the company."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: company_name
+        description: "The name of the company."
+        data_type: string
+        data_tests:
+          - not_null
+
+  - name: int_movie_cast
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_credits')
+                field: movie_id
+      - name: person_id
+        description: "The ID of the person."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: person_name
+        description: "The name of the person."
+        data_type: string
+        data_tests:
+          - not_null
+
+  - name: int_movie_director
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_credits') 
+                field: movie_id
+      - name: person_id
+        description: "The ID of the person."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: person_name
+        description: "The name of the person."
+        data_type: string
+        data_tests:
+          - not_null

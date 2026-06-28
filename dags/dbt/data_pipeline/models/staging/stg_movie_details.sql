@@ -20,6 +20,8 @@ select
   raw_payload:adult::boolean as adult,
   raw_payload:imdb_id::string as imdb_id,
   raw_payload:belongs_to_collection::variant as movie_belongs_to_collection,
+  raw_payload:genres::variant as genres,
+  raw_payload:production_companies::variant as production_companies,
   ingested_at
 from source
 qualify row_number() over (partition by movie_id order by ingested_at desc) = 1
