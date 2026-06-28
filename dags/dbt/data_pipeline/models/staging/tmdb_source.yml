@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: tmdb_source
+    description: "Raw TMDB API payloads landed by the Airflow ingestion DAG."
+    database: tesla_raw_db
+    schema: tmdb
+    tables:
+      - name: raw_movies
+        description: "Raw movie data from the TMDB API, one VARIANT payload per row."
+        columns:
+          - name: raw_payload
+            description: "The raw JSON payload from the TMDB API."
+            data_type: variant

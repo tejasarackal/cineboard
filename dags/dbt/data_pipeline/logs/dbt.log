@@ -1,0 +1,387 @@
+==================== 2026-06-27T06:59:04.680216Z | 019f07df-f14d-7fa2-933e-eb6da9c5749c ====================
+06:59:04.685623 [info ]: dbt-fusion 2.0.0-preview.193
+06:59:04.874108 [info ]:    Started resolving packages from packages.yml
+06:59:05.063106 [info ]:   Finished [  0.19s] resolving packages from packages.yml (1 items)
+06:59:05.063225 [info ]: Installing packages
+06:59:05.065020 [info ]: Installing dbt-labs/dbt_utils
+06:59:05.357229 [info ]:  Installed dbt-labs/dbt_utils: 1.4.0
+06:59:05.357393 [info ]:  Installed 1 package
+06:59:05.579417 [info ]: 
+==================== Execution Summary =====================
+Finished 'deps' successfully [899ms]
+==================== 2026-06-27T21:52:55.685164Z | 019f0b12-4905-79f2-8632-0d5069625d44 ====================
+21:52:55.713932 [info ]: dbt-fusion 2.0.0-preview.193
+21:52:55.744778 [info ]: Started loading project
+21:52:55.941013 [info ]: Loading ~/.dbt/profiles.yml
+21:52:55.954085 [info ]: Finished loading project [  0.21s]
+21:52:55.963365 [error]: [IoError (dbt1001)]: Profile 'data_pipeline' not found in profiles.yml
+  --> dbt_project.yml:3:10
+21:52:56.397860 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error [712ms]
+==================== 2026-06-27T21:55:42.459274Z | 019f0b14-d4e9-73c2-ac38-6adb91cdaa91 ====================
+21:55:42.463824 [info ]: dbt-fusion 2.0.0-preview.193
+21:55:42.469425 [info ]: Started loading project
+21:55:42.490104 [info ]: Loading ~/.dbt/profiles.yml
+21:55:42.494351 [info ]: Finished loading project [  0.02s]
+21:55:42.496518 [error]: [IoError (dbt1001)]: Profile 'data_pipeline' not found in profiles.yml
+  --> dbt_project.yml:3:10
+21:55:42.822112 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error [362ms]
+==================== 2026-06-27T22:00:54.969868Z | 019f0b19-99a8-79a0-b70e-f5c9addd89d8 ====================
+22:00:54.973319 [info ]: dbt-fusion 2.0.0-preview.193
+22:00:54.976982 [info ]: Started loading project
+22:00:55.007128 [info ]: Loading ~/.dbt/profiles.yml
+22:00:55.034116 [info ]: Finished loading project [  0.06s]
+22:00:55.035997 [error]: [InvalidConfig (dbt1005)]: In file `profiles.yml`, field `schema` is required.
+22:00:55.523370 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 error [553ms]
+==================== 2026-06-27T22:01:26.298455Z | 019f0b1a-1408-73e0-a925-e9c302565e35 ====================
+22:01:26.305546 [info ]: dbt-fusion 2.0.0-preview.193
+22:01:26.311174 [info ]: Started loading project
+22:01:26.331142 [info ]: Loading ~/.dbt/profiles.yml
+22:01:26.550631 [info ]: Loading packages.yml
+22:01:26.552515 [debug]:    Started loading packages
+22:01:26.575008 [debug]:     Loaded [  0.02s] packages
+22:01:26.580608 [info ]: Finished loading project [  0.27s]
+22:01:26.584818 [info ]: Started parsing
+22:01:26.625022 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.snowflake_database`: models.data_pipeline.marts.snowflake_database: invalid type: string "tesla_analytics_db", expected struct ProjectModelConfig at line 28 column 27
+  --> dbt_project.yml:28:27
+22:01:26.625896 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.snowflake_warehouse`: models.data_pipeline.marts.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 27 column 28
+  --> dbt_project.yml:27:28
+22:01:26.625997 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.snowflake_database`: models.data_pipeline.staging.snowflake_database: invalid type: string "tesla_staging_db", expected struct ProjectModelConfig at line 24 column 27
+  --> dbt_project.yml:24:27
+22:01:26.626051 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.snowflake_warehouse`: models.data_pipeline.staging.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 23 column 28
+  --> dbt_project.yml:23:28
+22:01:26.646803 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+22:01:26.661382 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.staging
+22:01:26.662633 [info ]: Finished parsing [  0.08s]
+22:01:27.292227 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+22:01:27.292227 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning and 4 errors for target 'dev' [993ms]
+==================== 2026-06-27T22:01:58.053051Z | 019f0b1a-9005-7193-8a85-5db5c576f697 ====================
+22:01:58.060582 [info ]: dbt-fusion 2.0.0-preview.193
+22:01:58.272688 [info ]: Loading packages.yml
+22:01:58.272732 [info ]: Installing packages
+22:01:58.300794 [info ]: Installing dbt-labs/dbt_utils
+22:01:58.927050 [info ]:  Installed dbt-labs/dbt_utils: 1.4.0
+22:01:58.930454 [info ]:  Installed 1 package
+22:01:59.024848 [info ]: 
+==================== Execution Summary =====================
+Finished 'deps' successfully [971ms]
+==================== 2026-06-27T22:03:27.118574Z | 019f0b1b-ebfa-7de2-9e33-a4f9dbcbb74b ====================
+22:03:27.123910 [info ]: dbt-fusion 2.0.0-preview.193
+22:03:27.355763 [info ]: Loading packages.yml
+22:03:27.355811 [info ]: Installing packages
+22:03:27.378432 [info ]: Installing dbt-labs/dbt_utils
+22:03:28.050283 [info ]:  Installed dbt-labs/dbt_utils: 1.4.0
+22:03:28.053221 [info ]:  Installed 1 package
+22:03:28.141566 [info ]: 
+==================== Execution Summary =====================
+Finished 'deps' successfully [1.0s]
+==================== 2026-06-27T22:03:30.344380Z | 019f0b1b-f8a7-7160-85e8-bdd857641d81 ====================
+22:03:30.344449 [info ]: dbt-fusion 2.0.0-preview.193
+22:03:30.346505 [info ]: Started loading project
+22:03:30.352277 [info ]: Loading ~/.dbt/profiles.yml
+22:03:30.538532 [info ]: Loading packages.yml
+22:03:30.539430 [debug]:    Started loading packages
+22:03:30.551625 [debug]:     Loaded [  0.01s] packages
+22:03:30.557309 [info ]: Finished loading project [  0.21s]
+22:03:30.560029 [info ]: Started parsing
+22:03:30.594825 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.snowflake_warehouse`: models.data_pipeline.marts.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 26 column 28
+  --> dbt_project.yml:26:28
+22:03:30.596384 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.snowflake_warehouse`: models.data_pipeline.staging.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 23 column 28
+  --> dbt_project.yml:23:28
+22:03:30.617103 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+22:03:30.633152 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.staging
+22:03:30.634481 [info ]: Finished parsing [  0.07s]
+22:03:31.233368 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+22:03:31.233368 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning and 2 errors for target 'dev' [888ms]
+==================== 2026-06-27T22:03:49.294155Z | 019f0b1c-429f-7a33-9b16-d563e6b7589e ====================
+22:03:49.296898 [info ]: dbt-fusion 2.0.0-preview.193
+22:03:49.299829 [info ]: Started loading project
+22:03:49.319832 [info ]: Loading ~/.dbt/profiles.yml
+22:03:49.492217 [info ]: Loading packages.yml
+22:03:49.495394 [debug]:    Started loading packages
+22:03:49.508470 [debug]:     Loaded [  0.01s] packages
+22:03:49.513578 [info ]: Finished loading project [  0.21s]
+22:03:49.517152 [info ]: Started parsing
+22:03:49.553702 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.snowflake_warehouse`: models.data_pipeline.marts.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 26 column 28
+  --> dbt_project.yml:26:28
+22:03:49.555076 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.snowflake_warehouse`: models.data_pipeline.staging.snowflake_warehouse: invalid type: string "interview_wh", expected struct ProjectModelConfig at line 23 column 28
+  --> dbt_project.yml:23:28
+22:03:49.578823 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+22:03:49.592108 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.staging
+22:03:49.593621 [info ]: Finished parsing [  0.08s]
+22:03:50.192235 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+22:03:50.192235 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning and 2 errors for target 'dev' [898ms]
+==================== 2026-06-27T22:03:55.839342Z | 019f0b1c-5c3e-74c0-bacc-95a75351ad87 ====================
+22:03:55.839422 [info ]: dbt-fusion 2.0.0-preview.193
+22:03:55.839555 [info ]: Started loading project
+22:03:55.842355 [info ]: Loading ~/.dbt/profiles.yml
+22:03:55.987409 [info ]: Loading packages.yml
+22:03:55.987518 [debug]:    Started loading packages
+22:03:55.989012 [debug]:     Loaded [  0.00s] packages
+22:03:55.989500 [info ]: Finished loading project [  0.15s]
+22:03:55.990459 [info ]: Started parsing
+22:03:56.014124 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+22:03:56.020828 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.staging
+22:03:56.021309 [info ]: Finished parsing [  0.03s]
+22:03:56.022751 [info ]: Started scheduling
+22:03:56.026022 [info ]: Finished scheduling [  0.00s]
+22:03:56.201546 [debug]: No platform credentials found, skipping remote license
+22:03:56.202946 [debug]: License check failed: Feature not licensed: 'lineage'
+22:03:56.227162 [info ]: Started building task graph
+22:03:56.230099 [info ]: Finished building task graph [  0.00s]
+22:03:56.284724 [info ]: Started rendering (6 nodes)
+22:03:56.284955 [info ]: Started seed tmbd_raw.raw_supplies
+22:03:56.285156 [debug]: Started rendering seed tmbd_raw.raw_supplies
+22:03:56.285727 [info ]: Started seed tmbd_raw.raw_stores
+22:03:56.285737 [debug]: Started rendering seed tmbd_raw.raw_stores
+22:03:56.285744 [info ]: Started seed tmbd_raw.raw_products
+22:03:56.285749 [debug]: Started rendering seed tmbd_raw.raw_products
+22:03:56.285755 [info ]: Started seed tmbd_raw.raw_orders
+22:03:56.285758 [debug]: Started rendering seed tmbd_raw.raw_orders
+22:03:56.285765 [info ]: Started seed tmbd_raw.raw_items
+22:03:56.285769 [debug]: Started rendering seed tmbd_raw.raw_items
+22:03:56.285775 [info ]: Started seed tmbd_raw.raw_customers
+22:03:56.285779 [debug]: Started rendering seed tmbd_raw.raw_customers
+22:03:56.287723 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_stores [success]
+22:03:56.287756 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_stores (table)
+22:03:56.287768 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_orders [success]
+22:03:56.287791 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_orders (table)
+22:03:56.287797 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_items [success]
+22:03:56.287808 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_items (table)
+22:03:56.287813 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_products [success]
+22:03:56.287824 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_products (table)
+22:03:56.287828 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_supplies [success]
+22:03:56.287839 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_supplies (table)
+22:03:56.287844 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_customers [success]
+22:03:56.287855 [info ]: Finished rendering [  0.00s] (6 nodes, 0 skipped, 0 errors)
+22:03:56.287864 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_customers (table)
+22:03:56.686807 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [847ms]
+Processed: 6 seeds
+Summary: 6 total | 6 success
+==================== 2026-06-27T22:15:50.671855Z | 019f0b27-447c-7e60-9c6c-f937808a2db3 ====================
+22:15:50.675415 [info ]: dbt-fusion 2.0.0-preview.193
+22:15:50.679193 [info ]: Started loading project
+22:15:50.701761 [info ]: Loading ~/.dbt/profiles.yml
+22:15:50.901795 [info ]: Loading packages.yml
+22:15:50.904102 [debug]:    Started loading packages
+22:15:50.922201 [debug]:     Loaded [  0.02s] packages
+22:15:50.929212 [info ]: Finished loading project [  0.25s]
+22:15:50.932903 [info ]: Started parsing
+22:15:50.997085 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+22:15:51.013066 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.staging
+22:15:51.014873 [info ]: Finished parsing [  0.08s]
+22:15:51.021275 [info ]: Started scheduling
+22:15:51.023397 [info ]: Finished scheduling [  0.00s]
+22:15:51.160367 [debug]: No platform credentials found, skipping remote license
+22:15:51.161876 [debug]: License check failed: Feature not licensed: 'lineage'
+22:15:51.192202 [info ]: Started building task graph
+22:15:51.194789 [info ]: Finished building task graph [  0.00s]
+22:15:51.243416 [info ]: Started rendering (6 nodes)
+22:15:51.243809 [info ]: Started seed tmbd_raw.raw_supplies
+22:15:51.244171 [debug]: Started rendering seed tmbd_raw.raw_supplies
+22:15:51.244772 [info ]: Started seed tmbd_raw.raw_stores
+22:15:51.244780 [debug]: Started rendering seed tmbd_raw.raw_stores
+22:15:51.244789 [info ]: Started seed tmbd_raw.raw_products
+22:15:51.244795 [debug]: Started rendering seed tmbd_raw.raw_products
+22:15:51.244802 [info ]: Started seed tmbd_raw.raw_orders
+22:15:51.244806 [debug]: Started rendering seed tmbd_raw.raw_orders
+22:15:51.244812 [info ]: Started seed tmbd_raw.raw_items
+22:15:51.244815 [debug]: Started rendering seed tmbd_raw.raw_items
+22:15:51.244834 [info ]: Started seed tmbd_raw.raw_customers
+22:15:51.244839 [debug]: Started rendering seed tmbd_raw.raw_customers
+22:15:51.245797 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_products [success]
+22:15:51.245990 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_products (table)
+22:15:51.246094 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_customers [success]
+22:15:51.246114 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_customers (table)
+22:15:51.246119 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_orders [success]
+22:15:51.246133 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_orders (table)
+22:15:51.246138 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_stores [success]
+22:15:51.246149 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_stores (table)
+22:15:51.246153 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_supplies [success]
+22:15:51.246165 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_supplies (table)
+22:15:51.246169 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_items [success]
+22:15:51.246180 [info ]: Finished rendering [  0.00s] (6 nodes, 0 skipped, 0 errors)
+22:15:51.246191 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_items (table)
+22:15:51.663701 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [991ms]
+Processed: 6 seeds
+Summary: 6 total | 6 success
+==================== 2026-06-27T22:57:50.327089Z | 019f0b4d-b6e5-7821-8cea-94854c930f7d ====================
+22:57:50.330829 [info ]: dbt-fusion 2.0.0-preview.193
+22:57:50.334090 [info ]: Started loading project
+22:57:50.356256 [info ]: Loading ~/.dbt/profiles.yml
+22:57:50.543372 [info ]: Loading packages.yml
+22:57:50.545804 [debug]:    Started loading packages
+22:57:50.567670 [debug]:     Loaded [  0.02s] packages
+22:57:50.572152 [info ]: Finished loading project [  0.24s]
+22:57:50.576099 [info ]: Started parsing
+22:57:50.613782 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.database`: models.data_pipeline.marts.database: invalid type: string "tesla_analytics_db", expected struct ProjectModelConfig at line 27 column 17
+  --> dbt_project.yml:27:17
+22:57:50.614639 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.finance_mart.database`: models.data_pipeline.marts.finance_mart.database: invalid type: string "tesla_analytics_db", expected struct ProjectModelConfig at line 30 column 19
+  --> dbt_project.yml:30:19
+22:57:50.614692 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.finance_mart.schema`: models.data_pipeline.marts.finance_mart.schema: invalid type: string "finance_mart", expected struct ProjectModelConfig at line 31 column 17
+  --> dbt_project.yml:31:17
+22:57:50.614768 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.sales_mart.database`: models.data_pipeline.marts.sales_mart.database: invalid type: string "tesla_analytics_db", expected struct ProjectModelConfig at line 34 column 19
+  --> dbt_project.yml:34:19
+22:57:50.614822 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.marts.sales_mart.schema`: models.data_pipeline.marts.sales_mart.schema: invalid type: string "sales_mart", expected struct ProjectModelConfig at line 35 column 17
+  --> dbt_project.yml:35:17
+22:57:50.614873 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.database`: models.data_pipeline.staging.database: invalid type: string "tesla_staging_db", expected struct ProjectModelConfig at line 23 column 17
+  --> dbt_project.yml:23:17
+22:57:50.614921 [error]: [SerializationError (dbt1013)]: Invalid model definition `data_pipeline.staging.schema`: models.data_pipeline.staging.schema: invalid type: string "movies", expected struct ProjectModelConfig at line 24 column 15
+  --> dbt_project.yml:24:15
+22:57:50.638799 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.01s]
+22:57:50.654371 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 5 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.marts.finance_mart
+- models.data_pipeline.marts.sales_mart
+- models.data_pipeline.staging
+22:57:50.655952 [info ]: Finished parsing [  0.08s]
+22:57:51.323151 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+22:57:51.323151 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning and 7 errors for target 'dev' [996ms]
+==================== 2026-06-27T23:03:41.781156Z | 019f0b53-13c4-7bf1-bfe6-35778bcf5d09 ====================
+23:03:41.785392 [info ]: dbt-fusion 2.0.0-preview.193
+23:03:41.788772 [info ]: Started loading project
+23:03:41.812887 [info ]: Loading ~/.dbt/profiles.yml
+23:03:41.994199 [info ]: Loading packages.yml
+23:03:41.997360 [debug]:    Started loading packages
+23:03:42.013314 [debug]:     Loaded [  0.02s] packages
+23:03:42.017931 [info ]: Finished loading project [  0.23s]
+23:03:42.022285 [info ]: Started parsing
+23:03:42.078883 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.01s]
+23:03:42.095414 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 5 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts
+- models.data_pipeline.marts.finance_mart
+- models.data_pipeline.marts.sales_mart
+- models.data_pipeline.staging
+23:03:42.097111 [info ]: Finished parsing [  0.07s]
+23:03:42.103108 [info ]: Started scheduling
+23:03:42.104731 [info ]: Finished scheduling [  0.00s]
+23:03:42.241844 [debug]: No platform credentials found, skipping remote license
+23:03:42.243543 [debug]: License check failed: Feature not licensed: 'lineage'
+23:03:42.271983 [info ]: Started building task graph
+23:03:42.274659 [info ]: Finished building task graph [  0.00s]
+23:03:42.335504 [info ]: Started rendering (6 nodes)
+23:03:42.336480 [info ]: Started seed tmbd_raw.raw_supplies
+23:03:42.336901 [debug]: Started rendering seed tmbd_raw.raw_supplies
+23:03:42.337494 [info ]: Started seed tmbd_raw.raw_stores
+23:03:42.337500 [debug]: Started rendering seed tmbd_raw.raw_stores
+23:03:42.337507 [info ]: Started seed tmbd_raw.raw_products
+23:03:42.337511 [debug]: Started rendering seed tmbd_raw.raw_products
+23:03:42.337516 [info ]: Started seed tmbd_raw.raw_orders
+23:03:42.337519 [debug]: Started rendering seed tmbd_raw.raw_orders
+23:03:42.337525 [info ]: Started seed tmbd_raw.raw_items
+23:03:42.337528 [debug]: Started rendering seed tmbd_raw.raw_items
+23:03:42.337533 [info ]: Started seed tmbd_raw.raw_customers
+23:03:42.337536 [debug]: Started rendering seed tmbd_raw.raw_customers
+23:03:42.338697 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_stores [success]
+23:03:42.338868 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_stores (table)
+23:03:42.339013 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_orders [success]
+23:03:42.339039 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_orders (table)
+23:03:42.339047 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_items [success]
+23:03:42.339061 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_items (table)
+23:03:42.339066 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_products [success]
+23:03:42.339077 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_products (table)
+23:03:42.339081 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_supplies [success]
+23:03:42.339092 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_supplies (table)
+23:03:42.339098 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_customers [success]
+23:03:42.339108 [info ]: Finished rendering [  0.00s] (6 nodes, 0 skipped, 0 errors)
+23:03:42.339118 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_customers (table)
+23:03:42.699935 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [918ms]
+Processed: 6 seeds
+Summary: 6 total | 6 success
+==================== 2026-06-27T23:03:59.660235Z | 019f0b53-5998-74d0-81ff-614ab531117e ====================
+23:03:59.663983 [info ]: dbt-fusion 2.0.0-preview.193
+23:03:59.667795 [info ]: Started loading project
+23:03:59.692990 [info ]: Loading ~/.dbt/profiles.yml
+23:03:59.868408 [info ]: Loading packages.yml
+23:03:59.870675 [debug]:    Started loading packages
+23:03:59.889679 [debug]:     Loaded [  0.02s] packages
+23:03:59.896624 [info ]: Finished loading project [  0.23s]
+23:03:59.900242 [info ]: Started parsing
+23:03:59.960452 [debug]: Finished parsing models/staging/tmdb_source.yml [  0.00s]
+23:03:59.975320 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 4 unused configuration paths:
+- models.data_pipeline
+- models.data_pipeline.marts.finance_mart
+- models.data_pipeline.marts.sales_mart
+- models.data_pipeline.staging
+23:03:59.976592 [info ]: Finished parsing [  0.08s]
+23:03:59.980561 [info ]: Started scheduling
+23:03:59.982573 [info ]: Finished scheduling [  0.00s]
+23:04:00.122559 [debug]: No platform credentials found, skipping remote license
+23:04:00.124618 [debug]: License check failed: Feature not licensed: 'lineage'
+23:04:00.152824 [info ]: Started building task graph
+23:04:00.154850 [info ]: Finished building task graph [  0.00s]
+23:04:00.206352 [info ]: Started rendering (6 nodes)
+23:04:00.206580 [info ]: Started seed tmbd_raw.raw_supplies
+23:04:00.206781 [debug]: Started rendering seed tmbd_raw.raw_supplies
+23:04:00.207403 [info ]: Started seed tmbd_raw.raw_stores
+23:04:00.207411 [debug]: Started rendering seed tmbd_raw.raw_stores
+23:04:00.207420 [info ]: Started seed tmbd_raw.raw_products
+23:04:00.207425 [debug]: Started rendering seed tmbd_raw.raw_products
+23:04:00.207431 [info ]: Started seed tmbd_raw.raw_orders
+23:04:00.207443 [debug]: Started rendering seed tmbd_raw.raw_orders
+23:04:00.207449 [info ]: Started seed tmbd_raw.raw_items
+23:04:00.207452 [debug]: Started rendering seed tmbd_raw.raw_items
+23:04:00.207457 [info ]: Started seed tmbd_raw.raw_customers
+23:04:00.207461 [debug]: Started rendering seed tmbd_raw.raw_customers
+23:04:00.208097 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_supplies [success]
+23:04:00.208275 [info ]:  Succeeded [  0.00s] seed  tmbd_raw.raw_supplies (table)
+23:04:00.208329 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_orders [success]
+23:04:00.208346 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_orders (table)
+23:04:00.208351 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_items [success]
+23:04:00.208363 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_items (table)
+23:04:00.208367 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_customers [success]
+23:04:00.208378 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_customers (table)
+23:04:00.208383 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_stores [success]
+23:04:00.208394 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_stores (table)
+23:04:00.208399 [debug]: Finished rendering [  0.00s] seed tmbd_raw.raw_products [success]
+23:04:00.208409 [info ]: Finished rendering [  0.00s] (6 nodes, 0 skipped, 0 errors)
+23:04:00.208419 [info ]:  Succeeded [-------] seed  tmbd_raw.raw_products (table)
+23:04:00.491183 [info ]: 
+==================== Execution Summary =====================
+Finished 'compile' with 1 warning for target 'dev' [830ms]
+Processed: 6 seeds
+Summary: 6 total | 6 success
