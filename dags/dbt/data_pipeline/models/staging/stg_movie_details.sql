@@ -3,7 +3,7 @@ with source as (
 )
 select
   raw_payload:id::int as movie_id,
-  raw_payload:title::string as movie_title,
+  raw_payload:title::string as title,
   raw_payload:original_name::string as original_name,
   raw_payload:original_title::string as original_title,
   raw_payload:original_language::string as original_language,
