@@ -86,7 +86,7 @@ def tmdb_ingestion_pipeline():
         
         target_dict["raw_movies"] = _write_payloads(movies, "raw_movies")
         target_dict["ids"] = sorted(set([movie["id"] for movie in movies]))
-        log.info(f"extract_movies done: {len(movies)} movies, {len(target_dict["ids"])} unique ids, file={target_dict["raw_movies"]}")
+        log.info(f"extract_movies done: {len(movies)} movies, {len(target_dict['ids'])} unique ids, file={target_dict['raw_movies']}")
 
         return target_dict
     
@@ -96,13 +96,12 @@ def tmdb_ingestion_pipeline():
         ids = target_dict["ids"]
         log.info(f"extract_movie_details fan-out: fetching details+credits for {len(ids)} movies")
 
-        movie_details, movie_credits, idx = [], [], 0
-        for id in ids:
-            idx += 1
-            movie_detail, movie_credit = details(id), credits(id)
-            movie_details.append(movie_detail)
-            movie_credits.append(movie_credit)
-            log.info(f"extract_movie_details fan-out: fetched details+credits for {idx}/{len(ids)} movies") if idx % 100 == 0 else None
+        movie_details, movie_credits = [], []
+        for idx, movie_id in enumerate(ids, 1):
+            movie_details.append(details(movie_id))
+            movie_credits.append(credits(movie_id))
+            if idx % 100 == 0:
+                log.info("extract_movie_details fan-out: fetched %s/%s movies", idx, len(ids))
 
         log.info(f"extract_movie_details fan-out done: {len(movie_details)} details, {len(movie_credits)} credits")
 

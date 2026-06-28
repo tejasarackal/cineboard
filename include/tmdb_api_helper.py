@@ -1,17 +1,17 @@
-#!/usr/bin/env python3
 """
-tmdb_api_helper.py — data-profiling pass over a TMDB sample (run BEFORE finalizing the model)
+tmdb_api_helper.py - thin TMDB API client (auth + retry/backoff) for the ingestion DAG.
 
-Inputs  : env TMDB_API_KEY ; optional --years (e.g. 2018-2023), --pages, --sample
-Outputs : prints a summary and writes ../docs/profile_report.md.
-Run     : TMDB_API_KEY=xxx python3 tools/profile_tmdb.py --years 2018-2023 --pages 2 --sample 150
-Notes   : stdlib only (urllib) so it runs with zero install. Hits the live TMDB API — run it
-          locally where you have network + a free key (themoviedb.org). 
-Last updated: 2026-06-26
+Purpose : GET TMDB endpoints with authentication and rate-limit handling; shared by the
+          extract tasks in dags/tmdb_ingestion_dag.py.
+Inputs  : TMDB key from Airflow Variable 'tmdb_api_key' (or env TMDB_API_KEY).
+Outputs : parsed JSON (dict) from the TMDB endpoint.
+Exports : get(path, **params), discover(year, page), details(movie_id), credits(movie_id).
+Last updated: 2026-06-28
 """
 from __future__ import annotations
 
 import json
+import logging
 import os
 import time
 import urllib.error
@@ -20,6 +20,8 @@ import urllib.request
 from airflow.sdk import Variable
 
 BASE = "https://api.themoviedb.org/3"
+
+log = logging.getLogger("airflow.task")
 
 def _api_key() -> str:
     key = os.environ.get("TMDB_API_KEY") or Variable.get("tmdb_api_key")
@@ -44,14 +46,16 @@ def get(path: str, **params) -> dict:
                 return json.load(r)
         except urllib.error.HTTPError as e:
             last_err = e
-            if e.code == 429: 
+            if e.code == 429:  # rate limited -> back off and retry
+                log.warning("TMDB 429 on %s, retry %s/5", path, attempt + 1)
                 time.sleep(2 * (attempt + 1))
                 continue
             raise
         except urllib.error.URLError as e:
             last_err = e
+            log.warning("TMDB connection error on %s, retry %s/5", path, attempt + 1)
             time.sleep(1 * (attempt + 1))
-    raise RuntimeError(f"failed after retries ({last_err}): {url}")
+    raise RuntimeError(f"failed after retries ({last_err}): {path}")
 
 
 def discover(year: int, page: int) -> dict:
