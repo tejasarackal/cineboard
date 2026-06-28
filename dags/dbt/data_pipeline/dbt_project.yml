@@ -17,11 +17,14 @@ seeds:
 models:
   data_pipeline:
     +static_analysis: strict
-    # Materialize staging models as views, and marts as tables
     staging:
-      +materialized: table
+      +materialized: view
       +database: tesla_staging_db
-      +schema: movies
+      +schema: cinema
+      stg_movie_details:
+        +materialized: table
+        +database: tesla_staging_db
+        +schema: cinema
     marts:
       finance_mart:
         +materialized: table

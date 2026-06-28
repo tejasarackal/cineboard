@@ -1,0 +1,278 @@
+==================== 2026-06-28T19:02:38.895616Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-06-28T19:02:38.895696Z | c7ac5b52-fe15-4990-af51-27d4ab8e013b ====================
+19:02:38.895711 [info ]: Starting dbt LSP server
+19:02:38.895723 [info ]: Connecting to LSP client on port 8000
+19:02:38.895960 [info ]: Successfully connected to LSP client
+19:02:38.895974 [info ]: Creating LSP service...
+19:02:38.941226 [info ]: Creating LSP server...
+19:02:38.941241 [info ]: Starting LSP server...
+19:02:38.944861 [info ]: Loading profiles.yml
+19:02:38.953568 [info ]: Started loading project
+19:02:38.953837 [info ]: Loading profiles.yml
+19:02:39.089618 [info ]: Loading packages.yml
+19:02:39.089694 [debug]:    Started loading packages
+19:02:39.093567 [debug]:     Loaded [  0.00s] packages
+19:02:39.094265 [info ]: Started parsing
+19:02:39.115470 [info ]: Finished loading project [  0.16s]
+19:02:39.118553 [debug]: Finished parsing models/sources.yml [  0.00s]
+19:02:39.119071 [debug]: Finished parsing models/staging/properties.yml [  0.00s]
+19:02:39.120325 [debug]: Finished parsing models/staging/stg_movie_details.sql [  0.00s]
+19:02:39.120815 [debug]: Finished parsing models/staging/stg_movies.sql [  0.00s]
+19:02:39.121958 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.data_pipeline.marts.finance_mart
+- models.data_pipeline.marts.sales_mart
+- seeds.data_pipeline
+19:02:39.122519 [info ]: Cached model count updated: 2 models (estimate)
+19:02:39.122527 [info ]: Cached model count updated: 2 models (accurate)
+19:02:39.122551 [info ]: Started scheduling
+19:02:39.122609 [info ]: Finished scheduling [  0.00s]
+19:02:39.122616 [debug]: Compilation - 1 nodes selected: {"model.data_pipeline.stg_movie_details"}
+19:02:39.122631 [info ]: Started scheduling
+19:02:39.122648 [info ]: Finished scheduling [  0.00s]
+19:02:39.122689 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "TESLA_RAW_DB", schema: "TMDB", table: "RAW_MOVIE_DETAILS" }) and interval: None
+19:02:39.122703 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "TESLA_RAW_DB", schema: "TMDB", table: "RAW_MOVIES" }) and interval: None
+19:02:39.419875 [debug]: Requesting license from https://if159.us1.dbt.com/api/private/accounts/70506183145107/feature-licenses/ with 1 key IDs: ["fusion-prod-2025-11-20"]
+19:02:39.830863 [warn ]: [LicenseError (dbt1068)]: Error loading license from remote server if159.us1.dbt.com, skipping: Email not verified
+19:02:39.952763 [debug]: Requesting license from https://if159.us1.dbt.com/api/private/accounts/70506183145107/feature-licenses/ with 1 key IDs: ["fusion-prod-2025-11-20"]
+19:02:40.275144 [debug]: License check failed: Feature not licensed: 'lineage'
+19:02:40.275256 [warn ]: [LicenseError (dbt1068)]: Strict static analysis requires logging into dbt. Run dbt login to sign in or create a free account, or provide a dbt_cloud.yml downloaded from dbt platform's account settings. Static analysis is now running in baseline mode.
+19:02:40.321144 [info ]: Started building task graph
+19:02:40.321205 [info ]: Finished building task graph [  0.00s]
+19:02:40.325331 [info ]: Started rendering (1 nodes)
+19:02:40.325353 [info ]: Started model cinema.stg_movie_details
+19:02:40.325364 [debug]: Started rendering model cinema.stg_movie_details
+19:02:40.325403 [info ]: Finished parsing [  1.23s]
+19:02:40.326234 [debug]: Compiled SQL for node model.data_pipeline.stg_movie_details at target/.lsp/compiled/data_pipeline/models/staging/stg_movie_details.sql
+19:02:40.326303 [debug]: Finished rendering [  0.00s] model cinema.stg_movie_details [success]
+19:02:40.326331 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+19:02:40.326372 [info ]: Started analyzing (1 nodes)
+19:02:40.326382 [debug]: Started analyzing model cinema.stg_movie_details
+19:02:40.331616 [debug]: Finished analyzing [  0.01s] model cinema.stg_movie_details [success]
+19:02:40.331629 [info ]: Finished analyzing [  0.01s] (1 nodes, 0 skipped, 0 errors)
+19:02:40.331637 [info ]:  Succeeded [  0.01s] model cinema.stg_movie_details (table)
+19:02:40.351722 [warn ]: [NotSupported (dbt9000)]: SQLFluff templater 'jinja' is not supported. fs lint/format only supports SQLFluff templater 'dbt' or 'dbt-cloud'. Continuing anyway.
+19:02:40.352233 [info ]:    Started linting (1 items)
+19:02:40.352780 [info ]:    Started linting models/staging/stg_movie_details.sql
+19:02:40.357380 [info ]:     Linted [  0.00s] models/staging/stg_movie_details.sql
+19:02:40.357452 [info ]:   Finished [  0.01s] linting (1 items)
+19:02:40.359285 [info ]: Started scheduling
+19:02:40.359311 [info ]: Finished scheduling [  0.00s]
+19:02:40.360501 [info ]: Cached model count updated: 2 models (accurate)
+19:02:40.741012 [debug]: License check failed: Feature not licensed: 'lineage'
+19:02:41.539975 [info ]: Started loading project
+19:02:41.541137 [info ]: Loading profiles.yml
+19:02:41.572742 [info ]: Cached model count updated: 2 models (estimate)
+19:02:41.572771 [info ]: Cached model count updated: 2 models (accurate)
+19:02:41.572815 [info ]: Started scheduling
+19:02:41.572908 [info ]: Finished scheduling [  0.00s]
+19:02:41.572925 [debug]: Compilation - 2 nodes selected: {"model.data_pipeline.stg_movie_details", "model.data_pipeline.stg_movies"}
+19:02:41.573661 [debug]: License check failed: Feature not licensed: 'lineage'
+19:02:41.601303 [info ]: Started building task graph
+19:02:41.601358 [info ]: Finished building task graph [  0.00s]
+19:02:41.603048 [info ]: Started rendering (2 nodes)
+19:02:41.603065 [info ]: Started model cinema.stg_movies
+19:02:41.603074 [debug]: Started rendering model cinema.stg_movies
+19:02:41.603097 [info ]: Started model cinema.stg_movie_details
+19:02:41.603103 [debug]: Started rendering model cinema.stg_movie_details
+19:02:41.603136 [info ]: Finished loading project [  0.06s]
+19:02:41.603313 [debug]: Compiled SQL for node model.data_pipeline.stg_movie_details at target/.lsp/compiled/data_pipeline/models/staging/stg_movie_details.sql
+19:02:41.603368 [debug]: Finished rendering [  0.00s] model cinema.stg_movie_details [success]
+19:02:41.603399 [info ]: Started analyzing (2 nodes)
+19:02:41.603407 [debug]: Started analyzing model cinema.stg_movie_details
+19:02:41.603813 [debug]: Compiled SQL for node model.data_pipeline.stg_movies at target/.lsp/compiled/data_pipeline/models/staging/stg_movies.sql
+19:02:41.603858 [debug]: Finished rendering [  0.00s] model cinema.stg_movies [success]
+19:02:41.603866 [info ]: Finished rendering [  0.00s] (2 nodes, 0 skipped, 0 errors)
+19:02:41.603874 [debug]: Started analyzing model cinema.stg_movies
+19:02:41.604115 [debug]: Finished analyzing [  0.00s] model cinema.stg_movie_details [success]
+19:02:41.604122 [info ]:  Succeeded [-------] model cinema.stg_movie_details (table)
+19:02:41.604132 [debug]: Finished analyzing [  0.00s] model cinema.stg_movies [success]
+19:02:41.604136 [info ]: Finished analyzing [  0.00s] (2 nodes, 0 skipped, 0 errors)
+19:02:41.604139 [info ]:  Succeeded [-------] model cinema.stg_movies (table)
+19:02:41.616758 [warn ]: [NotSupported (dbt9000)]: SQLFluff templater 'jinja' is not supported. fs lint/format only supports SQLFluff templater 'dbt' or 'dbt-cloud'. Continuing anyway.
+19:02:41.620007 [info ]:    Started linting (66 items)
+19:02:41.620147 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_equal_rowcount.sql
+19:02:41.620146 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/recency_time_included.sql
+19:02:41.620144 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/macros/assert_equal_values.sql
+19:02:41.620146 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_column_values_where.sql
+19:02:41.620167 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_no_columns.sql
+19:02:41.620177 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/macros/tests.sql
+19:02:41.620158 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/equality_less_columns.sql
+19:02:41.620224 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/recency_time_excluded.sql
+19:02:41.620696 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_equal_rowcount.sql
+19:02:41.620696 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/equality_less_columns.sql
+19:02:41.620711 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_fewer_rows_than.sql
+19:02:41.620718 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot_quote.sql
+19:02:41.620816 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/macros/tests.sql
+19:02:41.620824 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/datetime/test_date_spine.sql
+19:02:41.620841 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_no_columns.sql
+19:02:41.620849 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_prefix_suffix.sql
+19:02:41.620876 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/recency_time_included.sql
+19:02:41.620889 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/recency_time_excluded.sql
+19:02:41.620905 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_equal_column_subset.sql
+19:02:41.620905 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_not_empty_string_passing.sql
+19:02:41.620922 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_fewer_rows_than.sql
+19:02:41.620928 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/geo/test_haversine_distance_km.sql
+19:02:41.620997 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_column_values_where.sql
+19:02:41.621003 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_filtered_columns_in_relation.sql
+19:02:41.621005 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/macros/assert_equal_values.sql
+19:02:41.621010 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/macros/limit_zero.sql
+19:02:41.621076 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot_quote.sql
+19:02:41.621081 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_width_bucket.sql
+19:02:41.621088 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_prefix_suffix.sql
+19:02:41.621093 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_quote_identifiers.sql
+19:02:41.621093 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/datetime/test_date_spine.sql
+19:02:41.621098 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_base_uppercase.sql
+19:02:41.622045 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_width_bucket.sql
+19:02:41.622052 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/web/test_url_host.sql
+19:02:41.622086 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_base_uppercase.sql
+19:02:41.622091 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_lowercase.sql
+19:02:41.622137 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_quote_identifiers.sql
+19:02:41.622142 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_unquote_aliases.sql
+19:02:41.622158 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/generic_tests/test_equal_column_subset.sql
+19:02:41.622164 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/assert_pretty_time_is_string.sql
+19:02:41.622166 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_not_empty_string_passing.sql
+19:02:41.622163 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/geo/test_haversine_distance_km.sql
+19:02:41.622168 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/macros/limit_zero.sql
+19:02:41.622171 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_nullcheck_table.sql
+19:02:41.622181 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_uppercase.sql
+19:02:41.622185 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/geo/test_haversine_distance_mi.sql
+19:02:41.622198 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_lowercase.sql
+19:02:41.622202 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_uppercase.sql
+19:02:41.622393 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_unquote_aliases.sql
+19:02:41.622390 [warn ]: [SelectTrailingComma (dbt0150)]: Trailing comma in select statement forbidden
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_get_filtered_columns_in_relation.sql:9:79
+19:02:41.622403 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ref('data_url_host')}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/web/test_url_host.sql:3:19
+19:02:41.622415 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/web/test_url_path.sql
+19:02:41.622417 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_deduplicate.sql
+19:02:41.622421 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_uppercase.sql
+19:02:41.622425 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_no_source_column.sql
+19:02:41.622434 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/assert_pretty_time_is_string.sql
+19:02:41.622438 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/test_slugify.sql
+19:02:41.622439 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_uppercase.sql
+19:02:41.622443 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union.sql
+19:02:41.622450 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/geo/test_haversine_distance_mi.sql
+19:02:41.622464 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/web/test_url_host.sql
+19:02:41.622463 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_single_value.sql
+19:02:41.622491 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_filtered_columns_in_relation.sql
+19:02:41.622495 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_relations_by_pattern.sql
+19:02:41.622621 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ safe_cast('field_1',
+        type_string()
+    )}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_nullcheck_table.sql:27:5
+19:02:41.622701 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ safe_cast('field_2',
+        type_string()
+    )}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_nullcheck_table.sql:31:5
+19:02:41.622776 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ safe_cast('field_3',
+        type_string()
+    )}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_nullcheck_table.sql:35:5
+19:02:41.622782 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_nullcheck_table.sql
+19:02:41.622785 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_pivot.sql
+19:02:41.623277 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_relations_by_pattern.sql
+19:02:41.623283 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_relations_by_prefix_and_union.sql
+19:02:41.623411 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_relations_by_prefix_and_union.sql
+19:02:41.623418 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/web/test_urls.sql
+19:02:41.623415 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ref('data_url_path')}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/web/test_url_path.sql:3:19
+19:02:41.623425 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/web/test_url_path.sql
+19:02:41.623430 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/generic/expect_table_columns_to_match_set.sql
+19:02:41.623424 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_no_source_column.sql
+19:02:41.623457 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_where.sql
+19:02:41.623464 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union.sql
+19:02:41.623514 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_base.sql
+19:02:41.623507 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/test_slugify.sql
+19:02:41.623534 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/sql/test_get_column_values_use_default.sql
+19:02:41.623670 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/web/test_urls.sql
+19:02:41.623684 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/assert_get_query_results_as_dict_objects_equal.sql
+19:02:41.623712 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_deduplicate.sql
+19:02:41.623723 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_generate_series.sql
+19:02:41.623779 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_single_value.sql
+19:02:41.623784 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_single_value_default.sql
+19:02:41.623802 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_base.sql
+19:02:41.623813 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_base_lowercase.sql
+19:02:41.623853 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_where.sql
+19:02:41.623862 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_union_where_base.sql
+19:02:41.623909 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_generate_series.sql
+19:02:41.623914 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_generate_surrogate_key.sql
+19:02:41.623925 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_pivot.sql
+19:02:41.623936 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_pivot_apostrophe.sql
+19:02:41.624037 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_exclude_base_lowercase.sql
+19:02:41.624043 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/assert_pretty_output_msg_is_string.sql
+19:02:41.624049 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_generate_surrogate_key.sql
+19:02:41.624052 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_get_column_values.sql
+19:02:41.624107 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_single_value_default.sql
+19:02:41.624105 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_union_where_base.sql
+19:02:41.624111 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_groupby.sql
+19:02:41.624114 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/generic/expect_table_columns_to_match_set.sql
+19:02:41.624115 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot.sql
+19:02:41.624125 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot_bool.sql
+19:02:41.624251 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/jinja_helpers/assert_pretty_output_msg_is_string.sql
+19:02:41.624257 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ config(enabled = false)}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/tests/sql/test_get_column_values_use_default.sql:7:1
+19:02:41.624264 [info ]:    Started linting logs/query_log.sql
+19:02:41.624269 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/sql/test_get_column_values_use_default.sql
+19:02:41.624274 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/tests/sql/test_get_single_value_multiple_rows.sql
+19:02:41.624317 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_pivot_apostrophe.sql
+19:02:41.624321 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_add.sql
+19:02:41.624370 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_get_column_values.sql
+19:02:41.624374 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_subtract.sql
+19:02:41.624402 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ safe_cast("'a'", type_string() )}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_groupby.sql:5:9
+19:02:41.624408 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot.sql
+19:02:41.624415 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_unpivot_bool.sql
+19:02:41.624421 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_divide.sql
+19:02:41.624420 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_not_empty_string_failing.sql
+19:02:41.624443 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_add.sql
+19:02:41.624447 [info ]:    Started linting models/staging/stg_movies.sql
+19:02:41.624486 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/sql/test_get_single_value_multiple_rows.sql
+19:02:41.624491 [info ]:    Started linting target/.lsp/compiled/data_pipeline/models/staging/stg_movie_details.sql
+19:02:41.624528 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/tests/assert_get_query_results_as_dict_objects_equal.sql
+19:02:41.624540 [info ]:    Started linting models/staging/stg_movie_details.sql
+19:02:41.624558 [warn ]: [JinjaPadding (dbt0175)]: Jinja tags should have a single whitespace on either side: {{ safe_cast("'b'", type_string() )}} [JJ01]
+  --> dbt_packages/dbt_utils/integration_tests/models/sql/test_groupby.sql:6:9
+19:02:41.624566 [info ]:    Started linting target/.lsp/compiled/data_pipeline/models/staging/stg_movies.sql
+19:02:41.624574 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_subtract.sql
+19:02:41.624585 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star.sql
+19:02:41.624599 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_safe_divide.sql
+19:02:41.624603 [info ]:    Started linting dbt_packages/dbt_utils/integration_tests/models/sql/test_star_aggregate.sql
+19:02:41.624649 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_not_empty_string_failing.sql
+19:02:41.624657 [info ]:     Linted [  0.00s] target/.lsp/compiled/data_pipeline/models/staging/stg_movies.sql
+19:02:41.624687 [info ]:     Linted [  0.00s] target/.lsp/compiled/data_pipeline/models/staging/stg_movie_details.sql
+19:02:41.624716 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_groupby.sql
+19:02:41.624758 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star_aggregate.sql
+19:02:41.624764 [info ]:     Linted [  0.00s] dbt_packages/dbt_utils/integration_tests/models/sql/test_star.sql
+19:02:41.625194 [info ]:     Linted [  0.00s] logs/query_log.sql
+19:02:41.625618 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:2:23
+19:02:41.625815 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:3:29
+19:02:41.625999 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:4:34
+19:02:41.626201 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:5:32
+19:02:41.626527 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:6:32
+19:02:41.626869 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:7:35
+19:02:41.627095 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:8:37
+19:02:41.627345 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:9:35
+19:02:41.627689 [warn ]: [KeywordCaseMismatch (dbt0107)]: Keywords case is expected to be Consistent across the query, got a mix of Upper and Lower ('SELECT', 'as') [CP01].
+  --> models/staging/stg_movies.sql:10:31
+19:02:41.627837 [info ]:     Linted [  0.00s] models/staging/stg_movie_details.sql
+19:02:41.627852 [info ]:     Linted [  0.00s] models/staging/stg_movies.sql
+19:02:41.627925 [info ]:   Finished [  0.01s] linting (66 items)
+19:02:41.629560 [info ]: Started scheduling
+19:02:41.629588 [info ]: Finished scheduling [  0.00s]
+19:02:41.629982 [info ]: Cached model count updated: 2 models (accurate)
+19:02:42.740616 [debug]: License check failed: Feature not licensed: 'lineage'
+19:06:47.823185 [debug]: License check failed: Feature not licensed: 'lineage'
+19:06:52.208389 [debug]: License check failed: Feature not licensed: 'lineage'
+19:06:54.660430 [debug]: License check failed: Feature not licensed: 'lineage'
+19:07:55.830009 [debug]: License check failed: Feature not licensed: 'lineage'
+19:08:12.322504 [debug]: License check failed: Feature not licensed: 'lineage'
+19:08:44.618297 [debug]: License check failed: Feature not licensed: 'lineage'

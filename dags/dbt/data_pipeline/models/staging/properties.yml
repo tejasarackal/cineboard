@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_movies
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+      - name: movie_title
+        description: "The title of the movie."
+        data_type: string
+      - name: movie_release_date
+        description: "The release date of the movie."
+        data_type: date
+        data_tests:
+          - not_null
+  - name: stg_movie_details
+    config:
+      materialized: table
+      database: tesla_staging_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_movies')
+                field: movie_id
+      - name: movie_revenue
+        description: "The revenue of the movie."
+        data_type: int
+        data_tests:
+          - generic_non_negative

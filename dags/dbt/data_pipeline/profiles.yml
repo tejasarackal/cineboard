@@ -1,0 +1,13 @@
+data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      threads: 16
+      account: fs27384.us-east-2.aws
+      user: tejasarackal
+      database: tesla_raw_db
+      warehouse: interview_wh
+      schema: tmbd
+      password: Tejas90@snowflake
+      role: tesla_role
