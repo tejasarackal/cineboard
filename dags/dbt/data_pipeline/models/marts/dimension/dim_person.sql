@@ -2,8 +2,7 @@ with people as (
     select 
         person_id,
         person_name,
-        coalesce(job, department) as job,
-        department,
+        known_for_department,
         popularity,
         gender
     from {{ ref('int_movie_cast') }}
@@ -11,8 +10,7 @@ with people as (
     select
         person_id,
         person_name,
-        job,
-        department,
+        known_for_department,
         popularity,
         gender
     from {{ ref('int_movie_director') }}
@@ -20,9 +18,8 @@ with people as (
 select distinct
     person_id,
     person_name,
-    job,
-    department,
+    known_for_department,
     popularity,
     gender
 from people
-qualify row_number() over (partition by person_id order by popularity desc, department desc) = 1
+qualify row_number() over (partition by person_id order by popularity desc) = 1

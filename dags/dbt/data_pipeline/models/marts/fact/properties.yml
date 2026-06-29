@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fact_movie
+    config:
+      materialized: incremental
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        description: "The status of the movie."
+        data_type: string
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - Released
+                  - Rumored
+                  - Planned
+                  - In Production
+                  - Post Production
+                  - Canceled
+                  - Ended
+      - name: vote_average
+        description: "The vote average of the movie."
+        data_type: float
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 10
+  
+  - name: fact_movie_snapshot
+    config:
+      materialized: incremental
+      database: tesla_analytics_db
+      schema: cinema
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - movie_id
+              - snapshot_date
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: snapshot_date
+        description: "The date of the snapshot."
+        data_type: date
+        data_tests:
+          - not_null

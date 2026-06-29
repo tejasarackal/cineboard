@@ -25,7 +25,8 @@ select
     cm.cast_character as character,
     cm.cast_adult as adult,
     cm.cast_gender as gender,
-    coalesce(cm.cast_known_for_department, cm.cast_department)  as department,
+    cm.cast_known_for_department as known_for_department,
+    cm.cast_department as department,
     cm.cast_popularity as popularity,
     cm.cast_credit_id as credit_id,
     cm.cast_job as job

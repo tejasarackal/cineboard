@@ -15,6 +15,20 @@ vars:
   crew_top_n: 10
   min_vote_count: 50
   min_films: 3
+  historic_start_date: "2026-01-01"
+
+seeds:
+  data_pipeline:
+    +database: tesla_staging_db
+    +schema: cinema
+    snapshot_seed:
+      +column_types:
+        movie_id: int
+        snapshot_date: date
+        popularity: float
+        vote_average: number(4,2)
+        vote_count: int
+        revenue: number
 
 models:
   data_pipeline:
@@ -34,6 +48,10 @@ models:
         +schema: cinema
       fact:
         +materialized: table
+        +database: tesla_analytics_db
+        +schema: cinema
+      bridge:
+        +materialized: view
         +database: tesla_analytics_db
         +schema: cinema
 
