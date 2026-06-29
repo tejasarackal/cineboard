@@ -81,3 +81,25 @@ models:
                   - '2: $25M-$50M'
                   - '3: $50M-$100M'
                   - '4: >$100M'
+
+  - name: agg_genre_evolution
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: genre_name
+        description: "The name of the genre."
+        data_type: string
+        data_tests:
+          - not_null
+      - name: release_year
+        description: "The year of the release."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: release_month
+        description: "The month of the release."
+        data_type: int
+        data_tests:
+          - not_null

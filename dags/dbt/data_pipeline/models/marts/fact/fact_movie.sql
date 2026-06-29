@@ -31,5 +31,5 @@ select
     m.ingested_at
 from movies as m
 {% if is_incremental() %}
-    where ingested_at > (select coalesce(max(ingested_at), '{{ var('historic_start_date') }}'::date) from {{ this }})
+    where m.ingested_at > (select coalesce(max(t.ingested_at), '{{ var('historic_start_date') }}'::date) from {{ this }} as t)
 {% endif %}
