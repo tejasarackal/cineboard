@@ -5,7 +5,7 @@ import altair as alt
 st.set_page_config(page_title="CineBoard", page_icon="🎬", layout="wide")
 conn = st.connection("snowflake")
 
-# @st.cache_data(ttl=600)
+@st.cache_data(ttl=600)
 def query_db(sql: str) -> pd.DataFrame:
     df = conn.query(sql, ttl=600)
     df.columns = df.columns.str.lower()
