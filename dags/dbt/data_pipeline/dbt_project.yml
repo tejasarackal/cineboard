@@ -6,6 +6,7 @@ seed-paths: ["seeds"]
 model-paths: ["models"]
 macro-paths: ["macros"]
 test-paths: ["tests"]
+analysis-paths: ["analyses"]
 clean-targets:
   - "target"
   - "dbt_packages"

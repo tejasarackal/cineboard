@@ -10,25 +10,27 @@ with observed as (
         false as is_synthetic
     from {{ source('tmdb', 'raw_movie_details') }}
 )
+{% if not is_incremental() %}
 , synthetic as (
     select
         movie_id,
         snapshot_date,
-        snapshot_date::timestamp as ordering_ts,   -- real captures win ties over a same-day seed
+        snapshot_date::timestamp as ordering_ts,
         popularity,
         vote_average,
         vote_count,
         revenue,
         true as is_synthetic
     from {{ ref('snapshot_seed') }}
-),
-
-combined as (
-    select * from observed
-    union all
-    select * from synthetic
 )
-
+{% endif %}
+,combined as (
+    select * from observed
+    {% if not is_incremental() %}
+        union all
+        select * from synthetic
+    {% endif %}
+)
 select
     movie_id,
     snapshot_date,
