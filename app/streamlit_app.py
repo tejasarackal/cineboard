@@ -47,59 +47,59 @@ with tab_trend:
     st.altair_chart(chart, use_container_width=True)
     st.caption("Most history is synthetic. Real captures accrue per pipeline run.")
 
-    # Genre ROI
-    with tab_roi:
-        st.subheader("Genre ROI over time (revenue ÷ budget)")
-        df = query_db("""
-            select 
-                genre_name, 
-                release_year, 
-                average_revenue_to_budget_ratio as avg_roi, 
-                movie_count
-            from tesla_analytics_db.cinema.agg_genre_roi 
-            where average_revenue_to_budget_ratio is not null
-        """)
-        genres = st.multiselect("Genres", sorted(df.genre_name.unique()),
-                                default=["Action", "Comedy", "Drama", "Horror"])
-        d = df[df.genre_name.isin(genres)]
-        st.altair_chart(
-            alt.Chart(d)
-            .mark_line(point=True)
-            .encode(
-                x=alt.X("release_year:O", title="Release Year"), 
-                y=alt.Y("avg_roi:Q", title="Avg ROI"),
-                color=alt.Color("genre_name:N", title="Genre"), 
-                tooltip=["genre_name","release_year","avg_roi","movie_count"]
-            )
-            .properties(height=420)
-            .interactive(),
-            use_container_width=True
+# Genre ROI
+with tab_roi:
+    st.subheader("Genre ROI over time (revenue ÷ budget)")
+    df = query_db("""
+        select 
+            genre_name, 
+            release_year, 
+            average_revenue_to_budget_ratio as avg_roi, 
+            movie_count
+        from tesla_analytics_db.cinema.agg_genre_roi 
+        where average_revenue_to_budget_ratio is not null
+    """)
+    genres = st.multiselect("Genres", sorted(df.genre_name.unique()),
+                            default=["Action", "Comedy", "Drama", "Horror"])
+    d = df[df.genre_name.isin(genres)]
+    st.altair_chart(
+        alt.Chart(d)
+        .mark_line(point=True)
+        .encode(
+            x=alt.X("release_year:O", title="Release Year"), 
+            y=alt.Y("avg_roi:Q", title="Avg ROI"),
+            color=alt.Color("genre_name:N", title="Genre"), 
+            tooltip=["genre_name","release_year","avg_roi","movie_count"]
         )
+        .properties(height=420)
+        .interactive(),
+        use_container_width=True
+    )
 
-        st.subheader("Genre Profilt Margin over time (profit ÷ budget)")
-        df = query_db("""
-            select 
-                genre_name, 
-                release_year, 
-                average_profit_margin as avg_profit_margin, 
-                movie_count
-            from tesla_analytics_db.cinema.agg_genre_roi 
-            where average_profit_margin is not null
-        """)
-        d = df[df.genre_name.isin(genres)]
-        st.altair_chart(
-            alt.Chart(d)
-            .mark_line(point=True)
-            .encode(
-                x=alt.X("release_year:O", title="Release Year"), 
-                y=alt.Y("avg_profit_margin:Q", title="Avg Profit Margin"),
-                color=alt.Color("genre_name:N", title="Genre"), 
-                tooltip=["genre_name","release_year","avg_profit_margin","movie_count"]
-            )
-            .properties(height=420)
-            .interactive(),
-            use_container_width=True
+    st.subheader("Genre Profilt Margin over time (profit ÷ budget)")
+    df = query_db("""
+        select 
+            genre_name, 
+            release_year, 
+            average_profit_margin as avg_profit_margin, 
+            movie_count
+        from tesla_analytics_db.cinema.agg_genre_roi 
+        where average_profit_margin is not null
+    """)
+    d = df[df.genre_name.isin(genres)]
+    st.altair_chart(
+        alt.Chart(d)
+        .mark_line(point=True)
+        .encode(
+            x=alt.X("release_year:O", title="Release Year"), 
+            y=alt.Y("avg_profit_margin:Q", title="Avg Profit Margin"),
+            color=alt.Color("genre_name:N", title="Genre"), 
+            tooltip=["genre_name","release_year","avg_profit_margin","movie_count"]
         )
+        .properties(height=420)
+        .interactive(),
+        use_container_width=True
+    )
 
 # Bankable Talent Tab
 with tab_talent:
@@ -118,7 +118,8 @@ with tab_talent:
                 scale=alt.Scale(type="log")),
         y=alt.Y("average_vote_rating:Q", title="Avg weighted rating",
                 scale=alt.Scale(zero=False)),
-        size=alt.Size("movie_count:Q", title="Films", scale=alt.Scale(range=[40, 500])),
+        size=alt.Size("movie_count:Q", title="Films", 
+        scale=alt.Scale(range=[40, 500])),
         color=alt.Color("role_type:N", title="Role"),
         tooltip=["person_name", "role_type", "movie_count",
                  "average_vote_rating", "average_revenue"],
@@ -131,7 +132,11 @@ with tab_talent:
         )
         .transform_filter("datum.rank <= 8")
         .mark_text(align="left", dx=7, fontSize=11)
-        .encode(x="average_revenue:Q", y="average_vote_rating:Q", text="person_name:N")
+        .encode(
+            x="average_revenue:Q", 
+            y="average_vote_rating:Q", 
+            text="person_name:N"
+        )
     )
     st.altair_chart((bubbles + labels).properties(height=500), use_container_width=True)
     st.caption("Top-right = high rating **and** high box office — the bankable sweet spot. "
