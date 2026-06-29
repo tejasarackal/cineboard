@@ -4,6 +4,8 @@ models:
   - name: fact_movie
     config:
       materialized: incremental
+      incremental_strategy: merge
+      unique_key: movie_id
       database: tesla_analytics_db
       schema: cinema
     columns:
@@ -40,6 +42,8 @@ models:
   - name: fact_movie_snapshot
     config:
       materialized: incremental
+      incremental_strategy: merge
+      unique_key: [movie_id, snapshot_date]
       database: tesla_analytics_db
       schema: cinema
     data_tests:

@@ -42,6 +42,5 @@ select
 from combined
 {% if is_incremental() %}
     where snapshot_date > (select coalesce(max(snapshot_date), '{{ var('historic_start_date') }}'::date) from {{ this }})
-    where m.ingested_at > (select coalesce(max(t.ingested_at), '{{ var("historic_start_date") }}'::date) from {{ this }} as t)
 {% endif %}
 qualify row_number() over (partition by movie_id, snapshot_date order by ordering_ts desc) = 1
