@@ -1,0 +1,4 @@
+streamlit>=1.30
+snowflake-snowpark-python>=1.11   # backs st.connection("snowflake")
+pandas
+altair

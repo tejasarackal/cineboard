@@ -15,7 +15,8 @@ vars:
   cast_top_n: 10
   crew_top_n: 10
   min_vote_count: 50
-  min_films: 3
+  min_films: 5
+  top_n_movies: 10
   historic_start_date: "2026-01-01"
 
 seeds:
@@ -53,6 +54,10 @@ models:
         +schema: cinema
       bridge:
         +materialized: view
+        +database: tesla_analytics_db
+        +schema: cinema
+      analytics:
+        +materialized: table
         +database: tesla_analytics_db
         +schema: cinema
 

@@ -29,7 +29,7 @@ models:
                   - Ended
       - name: vote_average
         description: "The vote average of the movie."
-        data_type: float
+        data_type: number(4,2)
         data_tests:
           - not_null
           - dbt_utils.accepted_range:

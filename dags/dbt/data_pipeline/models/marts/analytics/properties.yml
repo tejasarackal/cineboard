@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: daily_movie_trends
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - movie_id
+              - snapshot_date
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: movie_id
+        description: "The ID of the movie."
+        data_type: int
+        data_tests:
+          - not_null
+
+  - name: agg_talented_cast_member
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: person_id
+        description: "The ID of the person."
+        data_type: int
+        data_tests:
+          - not_null
+      - name: person_name
+        description: "The name of the person."
+        data_type: string
+        data_tests:
+          - not_null
+      - name: role_type
+        description: "The type of role the person has."
+        data_type: string
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - 'actor'
+                  - 'director'
+
+  - name: agg_genre_roi
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: genre_name
+        description: "The name of the genre."
+        data_type: string
+        data_tests:
+          - not_null
+      - name: release_year
+        description: "The year of the release."
+        data_type: int
+        data_tests:
+          - not_null
+  
+  - name: agg_budget_outcomes
+    config:
+      materialized: table
+      database: tesla_analytics_db
+      schema: cinema
+    columns:
+      - name: budget_tier
+        description: "The tier of the budget."
+        data_type: string
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - '1: <$25M'
+                  - '2: $25M-$50M'
+                  - '3: $50M-$100M'
+                  - '4: >$100M'
