@@ -24,7 +24,7 @@ with observed as (
     from {{ ref('snapshot_seed') }}
 )
 {% endif %}
-,combined as (
+, combined as (
     select * from observed
     {% if not is_incremental() %}
         union all
